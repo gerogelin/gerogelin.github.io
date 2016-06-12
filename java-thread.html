@@ -72,28 +72,34 @@
 <li>打印x.</li>
 </ol>
 <p>执行流程可能为（共两个线程A,B）:</p>
-<p>A1 - <em>A2</em> - A1 - B1 - <em>B2</em> - B1- <em>A2</em> - A1 - <em>A2</em> - <em>B2</em> - B1 - <em>B2</em></p>
+<p>A1 - <strong>A2</strong> - A1 - B1 - <strong>B2</strong> - B1- <strong>A2</strong> - A1 - <strong>A2</strong> - <strong>B2</strong> - B1 - <strong>B2</strong></p>
 <p>这时打印的x值为（x初值为100，红色的为打印的时间点）</p>
 <p>70，10，-20，-50，-50，-80</p>
 <p>每次打印都需要看之前执行了几次的减操作，就可以得到当前的x值，例如：因为第4，5次打印之间并没有做减的操作，所以打印的x值没有变化</p>
-<p>要处理这一的问题就是将两步的操作加上 _synchronized_的限制，加上这个限制后，在一个线程执行完在 <em>synchronized</em>的代码前，其他线程不能获得这个对象的操作权，专业术语就是这个对象被锁定了，就上面的例子说就是两个动作必须都做完才能再释放这个对象的锁。</p>
+<p>要处理这一的问题就是将两步的操作加上 <em>synchronized</em>的限制，加上这个限制后，在一个线程执行完在 <em>synchronized</em>的代码前，其他线程不能获得这个对象的操作权，专业术语就是这个对象被锁定了，就上面的例子说就是两个动作必须都做完才能再释放这个对象的锁。</p>
 <p><em>synchronized</em>的用法是</p>
 <ol>
 <li>直接加在函数头 </li>
 </ol>
-<p><code>java
-   public synchronized void Foo() {
-    x = x - 30; 
-    System.out.print(x);
-   }</code>
-2. 限制一个代码段</p>
-<p><code>java
-   public void Foo() {
-    synchronized(object){
-        x = x - 30;
-        System.out.print(x);
-    }
-   }</code></p>
+<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">synchronized</span> <span class="kt">void</span> <span class="nf">Foo</span><span class="o">()</span> <span class="o">{</span>
+   <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">30</span><span class="o">;</span>  
+   <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">x</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+
+
+<ol>
+<li>限制一个代码段</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">Foo</span><span class="o">()</span> <span class="o">{</span>
+   <span class="kd">synchronized</span><span class="o">(</span><span class="n">object</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">30</span><span class="o">;</span>
+      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">x</span><span class="o">);</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+
 <p>其中object是要锁定的对象，即那个多个线程都需要进行读取或修改的对象。</p>
 <h4>线程通信</h4>
 <p>当多个线程竞争一个资源时，可以另每个线程处于wait状态，wait是Java中每个对象都有的方法，其使用时是将当前运行的线程置为等待状态，notify和notifyAll也是每个对象均有的方法，使用时是唤醒其他要竞争资源的线程，告诉他们现在你们可以竞争这个资源了，我已经释放锁了。
