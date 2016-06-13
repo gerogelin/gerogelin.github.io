@@ -66,38 +66,26 @@
   <div>
     <hr />
 <p>vc6.0 中使用lib文件 使用库的方法如下：</p>
-<ol>
-<li>包含库的头文件</li>
-</ol>
+<hr />
+<p>包含库的头文件</p>
 <p>在应用程序工程中使用</p>
 <p><code>#include "file path"</code></p>
 <p>file path可以为绝对路径，也可以为相对于工程所在目录的相对路径</p>
 <p>如果头文件比较多，可以在<code>project&gt;settings&gt;c/c++&gt;preprocessor的Additional include directories</code>中填入你的头文件所在目录</p>
-<ol>
-<li>导入lib库。导入的方法很多</li>
-</ol>
-<blockquote>
+<hr />
+<p>导入lib库。导入的方法很多
+   * 直接用project&gt;add to project&gt;files的方式将.lib加入工程</p>
 <ul>
-<li>
-<p>直接用project&gt;add to project&gt;files的方式将.lib加入工程</p>
-</li>
 <li>
 <p>使用#pragma指令，如<code>#pragma comment(lib, "your lib path and name")</code></p>
+<p>与前面头文件一样，也可以不在这里指定路径，而是在project&gt;settings&gt;link&gt;input的Additional library path中输入.lib文件所在路径</p>
+</li>
+<li>
+<p>还可以在project&gt;settings&gt;link&gt;general的ojbect/library modules中输入.lib的名字</p>
 </li>
 </ul>
-</blockquote>
-<div class="highlight"><pre><span></span>  与前面头文件一样，也可以不在这里指定路径，而是在project&gt;settings&gt;link&gt;input的Additional library path中输入.lib文件所在路径
-</pre></div>
-
-
-<blockquote>
-<ul>
-<li>还可以在project&gt;settings&gt;link&gt;general的ojbect/library modules中输入.lib的名字</li>
-</ul>
-</blockquote>
-<ol>
-<li>编译执行程序，如果是静态库，编译后就可直接执行如果是动态库，需要将dll放到可执行文件所在目录下，或者系统目录下，如system32或者windows目录，或者其它任何一个位于环境变量PATH中的目录</li>
-</ol>
+<hr />
+<p>编译执行程序，如果是静态库，编译后就可直接执行如果是动态库，需要将dll放到可执行文件所在目录下，或者系统目录下，如system32或者windows目录，或者其它任何一个位于环境变量PATH中的目录</p>
   </div>
   <div class="tag-cloud">
     <p>
