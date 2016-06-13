@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="chs">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="http://gerogelin.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="http://gerogelin.github.io/theme/stylesheet/pygments.min.css">
+  <link rel="stylesheet" type="text/css" href="http://gerogelin.github.io/theme/stylesheet/font-awesome.min.css">
+
+
+
+
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+<meta name="author" content="Geroge Lin" />
+<meta name="description" content="一般要使用下面这个类进行管理SQLiteOpenHelper(Context context, String name, CursorFactory factory, int version)" />
+<meta name="keywords" content="data">
+<meta property="og:site_name" content="Geroge Lin's Technical Website"/>
+<meta property="og:title" content="Android Sqlite初级使用"/>
+<meta property="og:description" content="一般要使用下面这个类进行管理SQLiteOpenHelper(Context context, String name, CursorFactory factory, int version)"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://gerogelin.github.io/posts/2013/3月/android-sqlitechu-ji-shi-yong.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2013-03-06 09:59:00+08:00"/>
+<meta property="article:modified_time" content="2013-03-06 09:59:00+08:00"/>
+<meta property="article:author" content="http://gerogelin.github.io/author/geroge-lin.html">
+<meta property="article:section" content="Android"/>
+<meta property="article:tag" content="data"/>
+<meta property="og:image" content="http://gerogelin.github.io/images/avatar.jpg">
+  <title>Geroge Lin's Technical Website &ndash; Android Sqlite初级使用</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://gerogelin.github.io">
+        <img src="http://gerogelin.github.io/images/avatar.jpg" alt="Geroge Lin" title="Geroge Lin">
+      </a>
+      <h1><a href="http://gerogelin.github.io">Geroge Lin</a></h1>
+      <p>I'm Geroge Lin, From China. This is my technical website</p>
+      <nav>
+        <ul class="list">
+        </ul>
+      </nav>
+      <ul class="social">
+        <li><a class="sc-github" href="https://github.com/gerogelin" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-envelope" href="mailto:lyssan10@gmail.com" target="_blank"><i class="fa fa-envelope"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+  <main>
+    <nav>
+      <a href="http://gerogelin.github.io">Home</a>
+      <a href="/categories.html">CATEGORIES</a>
+      <a href="/tags.html">TAGS</a>
+    </nav>
+
+<article>
+  <header>
+    <h1 id="android-sqlitechu-ji-shi-yong">Android Sqlite初级使用</h1>
+    <p>Posted on 周三 06 三月 2013 in <a href="http://gerogelin.github.io/category/android.html">Android</a></p>
+  </header>
+  <div>
+    <p>一般要使用下面这个类进行管理<code>SQLiteOpenHelper(Context context, String name, CursorFactory factory, int version)</code></p>
+<p>name是数据库的名字</p>
+<p>数据库如果放在SD卡中的 data/data/包名/databases/ 中可以直接名字，不用加入绝对路径</p>
+<p>用这个类关联了数据库后调用getReadableDatabase()得到SQLDatabase类的对象</p>
+<p>SQLDatabase的对象可以进行SQL语言的执行</p>
+<p>查询的函数有<code>rawQuery</code>，<code>Query</code>，<code>execSQL</code>（不返回数据的，插入，修改的操作）等</p>
+<p>具体看API Rerference</p>
+<p>查询后若有返回的数据，则返回一个Cursor的数据类型，这个可以当作一个表来看</p>
+<p>有<code>getXXX(int column)</code>函数，XXX为数据类型，int，double等</p>
+<p>column是第几列的数据</p>
+<p><code>Cursor</code>应该有一个类似于++的操作将<code>Cursor</code>指向下一个   记录</p>
+<p><strong>注：</strong>记录是一个行，表是数据库的子集，数据库可以有多个表</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="http://gerogelin.github.io/tag/data.html">data</a>
+    </p>
+  </div>
+</article>
+
+    <footer>
+        <p>&copy; Geroge </p>
+<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p>    </footer>
+  </main>
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "name": "Android Sqlite初级使用",
+  "headline": "Android Sqlite初级使用",
+  "datePublished": "2013-03-06 09:59:00+08:00",
+  "dateModified": "2013-03-06 09:59:00+08:00",
+  "author": {
+    "@type": "Person",
+    "name": "Geroge Lin",
+    "url": "http://gerogelin.github.io/author/geroge-lin.html"
+  },
+  "image": "http://gerogelin.github.io/images/avatar.jpg",
+  "url": "http://gerogelin.github.io/posts/2013/3月/android-sqlitechu-ji-shi-yong.html",
+  "description": "一般要使用下面这个类进行管理SQLiteOpenHelper(Context context, String name, CursorFactory factory, int version)"
+}
+</script></body>
+</html>
