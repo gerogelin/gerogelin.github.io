@@ -91,12 +91,12 @@
 </li>
 </ol>
 <h5>Client端：</h5>
-<p>所谓IQ就是请求信息，回复信息。所以客户端需要实现向服务器请求(<strong>形成IQ包</strong>)，接受服务器传送的IQ信息包(<strong>对IQ进行解译</strong>)。而Server端是一体成型的，请求后处理形成回复的IQ包，作为handleIQ的返回值直接被传送到Client端。</p>
+<p>所谓IQ就是请求信息，回复信息。所以客户端需要实现向服务器请求( <strong>形成IQ包</strong>)，接受服务器传送的IQ信息包( <strong>对IQ进行解译</strong>)。而Server端是一体成型的，请求后处理形成回复的IQ包，作为handleIQ的返回值直接被传送到Client端。</p>
 <p>从而Client段有两个任务：</p>
 <ul>
 <li>形成IQ包 </li>
 <li>
-<p>对IQ进行解译<strong>(这里要非常小心的一点是服务器端和客户端的IQ封装是不一样的，客户端：<code>org.jivesoftware.smack.packet.IQ</code>，服务器端：<code>org.xmpp.packet.IQ</code>)</strong></p>
+<p>对IQ进行解译 <strong>(这里要非常小心的一点是服务器端和客户端的IQ封装是不一样的，客户端：<code>org.jivesoftware.smack.packet.IQ</code>，服务器端：<code>org.xmpp.packet.IQ</code>)</strong></p>
 </li>
 <li>
 <p>首先要继承IQ形成自己的IQ类，需要重写<code>getChildElementXML</code>方法，这个方法在每次IQ将要被发送的时候会被调用，返回值为string，这个string就会被发送的服务器端，就是说将IQ写成特定的xml，这个xml是以string的形式表示的。这里要注意写这个xml的头节点时需要与上面的name和namespace对应上，不然服务器不能识别</p>

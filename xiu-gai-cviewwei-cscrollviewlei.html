@@ -92,7 +92,7 @@
 <ol>
 <li>如果在修改以上代码后，程序产生</li>
 </ol>
-<p><img alt="error" src="images/2013/01/error.jpg" /></p>
+<p><img alt="error" src="images/2013/01/error.png" /></p>
 <p>其实这个错误只在视图最大化显示出错，原因是：原来是程序启动最大化时,视图ScrollViw出现了一个异常,需要设置<code>SetScrollSizes()</code> or <code>SetScaleToFitSize()</code>。</p>
 <p>解决方法：在类开时处即PreCreateWindow函数中增加<code>SetScrollSizes(MM_TEXT, CSize(0,0))</code>即可。</p>
   </div>
