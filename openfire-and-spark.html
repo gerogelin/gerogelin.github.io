@@ -78,32 +78,28 @@
 <p>下面详细说明如何自定义IQ，然后进行传输特定请求</p>
 <h5>Server端：</h5>
 <ol>
-<li>
-<p>从IQHandler(IQHandler的类参考)继承一个自定义的IQ handler 类
-   其中有两个需要重写的方法：①_getInfo_ ②_handleIQ_
-   handleIQ很明显就是自定义如何处理IQ包的，参数就是一个IQ，IQ基的函数<code>getChildElement</code>可以获取一个dom4j.Element，利用其优秀的构造，可以快速的提取出在xml文件中的信息。同时返回一个IQ，这个IQ会被传送到客户端。
-   getInfo是用于让IQRoute识别需要将IQ包分发给的handler的，查看getInfo函数，返回一个IQHandlerInfo，所以在函数我们需要自定义一个<code>IQHandlerInfo</code>，查看<code>IQHandlerInfo</code>的构造函数，有name，namespace，路由就是根据这两个参数判断将IQ分发给哪个handler的，一个handler与name和namespace绑定在一起。</p>
-</li>
-<li>
-<p>将IQHandler注册到路由中去，主要就是下面这样的代码
+<li>从IQHandler(IQHandler的类参考)继承一个自定义的IQ handler 类</li>
+</ol>
+<p>其中有两个需要重写的方法：①<strong>getInfo</strong> ②<strong>handleIQ</strong></p>
+<p>handleIQ很明显就是自定义如何处理IQ包的，参数就是一个IQ，IQ基的函数<code>getChildElement</code>可以获取一个dom4j.Element，利用其优秀的构造，可以快速的提取出在xml文件中的信息。同时返回一个IQ，这个IQ会被传送到客户端。</p>
+<p>getInfo是用于让IQRoute识别需要将IQ包分发给的handler的，查看getInfo函数，返回一个IQHandlerInfo，所以在函数我们需要自定义一个<code>IQHandlerInfo</code>，查看<code>IQHandlerInfo</code>的构造函数，有name，namespace，路由就是根据这两个参数判断将IQ分发给哪个handler的，一个handler与name和namespace绑定在一起。</p>
+<ol>
+<li>将IQHandler注册到路由中去，主要就是下面这样的代码
    <code>java
-   XMPPServer.getInstance().getIQRouter().addHandler(handler);</code></p>
-</li>
+   XMPPServer.getInstance().getIQRouter().addHandler(handler);</code></li>
 </ol>
 <h5>Client端：</h5>
 <p>所谓IQ就是请求信息，回复信息。所以客户端需要实现向服务器请求( <strong>形成IQ包</strong>)，接受服务器传送的IQ信息包( <strong>对IQ进行解译</strong>)。而Server端是一体成型的，请求后处理形成回复的IQ包，作为handleIQ的返回值直接被传送到Client端。</p>
 <p>从而Client段有两个任务：</p>
-<ul>
-<li>形成IQ包 </li>
-<li>
-<p>对IQ进行解译 <strong>(这里要非常小心的一点是服务器端和客户端的IQ封装是不一样的，客户端：<code>org.jivesoftware.smack.packet.IQ</code>，服务器端：<code>org.xmpp.packet.IQ</code>)</strong></p>
-</li>
+<p>① 形成IQ包 </p>
+<p>② 对IQ进行解译 <strong>(这里要非常小心的一点是服务器端和客户端的IQ封装是不一样的，客户端：<code>org.jivesoftware.smack.packet.IQ</code>，服务器端：<code>org.xmpp.packet.IQ</code>)</strong></p>
+<ol>
 <li>
 <p>首先要继承IQ形成自己的IQ类，需要重写<code>getChildElementXML</code>方法，这个方法在每次IQ将要被发送的时候会被调用，返回值为string，这个string就会被发送的服务器端，就是说将IQ写成特定的xml，这个xml是以string的形式表示的。这里要注意写这个xml的头节点时需要与上面的name和namespace对应上，不然服务器不能识别</p>
 <p><code>xml
    &lt;svgproject xmlns="com.lion.lin"&gt; &lt;/svgproject&gt;</code></p>
 </li>
-</ul>
+</ol>
 <p>像上面这样的代码name = svgproject， namespace = com.lion.lin，服务器中IQHandlerInfo要和这里的对应上。</p>
 <ol>
 <li>基础IQProvider形成自己的IQProvider类(<strong>这里provider是指向client这个应用程序提供IQ</strong>)，参数为XmlPullParser，是xml提取类，返回值IQ，通过xml提取并形成IQ就完成了IQ的解译。</li>
