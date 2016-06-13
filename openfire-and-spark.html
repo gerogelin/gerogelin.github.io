@@ -70,9 +70,17 @@
 <p>在Openfire开发中首先要知道一个Packet类，这个类封装了传输的信息与传输方法。</p>
 <p>Packet是一个虚基类，在Openfire中有三个子类，分别是<code>Message</code>，<code>IQ</code>（Info / Query），<code>Presence</code></p>
 <p>从三个类的名字中就可以清楚的看到三个类分别的功能</p>
+<ul>
+<li>
 <p><code>Message</code>实现对消息的封装</p>
+</li>
+<li>
 <p><code>IQ</code>实现一些特殊的请求与信息</p>
+</li>
+<li>
 <p><code>Presence</code>实现用户的在线情况</p>
+</li>
+</ul>
 <p>下图是Openfire处理Packet的流程(在新标签页打开查看大图)
 <img alt="onpenfire" src="images/2014/03/spark.jpg" /></p>
 <p>下面详细说明如何自定义IQ，然后进行传输特定请求</p>
