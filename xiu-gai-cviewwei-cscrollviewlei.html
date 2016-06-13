@@ -77,9 +77,8 @@
 </ol>
 <div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">CxxView</span><span class="o">::</span><span class="n">OnInitialUpdate</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="err">　　</span><span class="n">CScrollView</span><span class="o">::</span><span class="n">OnInitialUpdate</span><span class="p">();</span>
-
-<span class="err">　　</span><span class="n">SetScrollSizes</span><span class="p">(</span><span class="n">MM_TEXT</span><span class="p">,</span> <span class="n">CSize</span><span class="p">(</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">600</span> <span class="p">)</span> <span class="p">);</span>
+    <span class="n">CScrollView</span><span class="o">::</span><span class="n">OnInitialUpdate</span><span class="p">();</span>
+    <span class="n">SetScrollSizes</span><span class="p">(</span><span class="n">MM_TEXT</span><span class="p">,</span> <span class="n">CSize</span><span class="p">(</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">600</span> <span class="p">)</span> <span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -93,7 +92,7 @@
 <ol>
 <li>如果在修改以上代码后，程序产生</li>
 </ol>
-<p><img alt="error" src="image/2013/01/error.jpg" /></p>
+<p><img alt="error" src="images/2013/01/error.jpg" /></p>
 <p>其实这个错误只在视图最大化显示出错，原因是：原来是程序启动最大化时,视图ScrollViw出现了一个异常,需要设置<code>SetScrollSizes()</code> or <code>SetScaleToFitSize()</code>。</p>
 <p>解决方法：在类开时处即PreCreateWindow函数中增加<code>SetScrollSizes(MM_TEXT, CSize(0,0))</code>即可。</p>
   </div>
