@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="chs">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="http://gerogelin.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="http://gerogelin.github.io/theme/stylesheet/pygments.min.css">
+  <link rel="stylesheet" type="text/css" href="http://gerogelin.github.io/theme/stylesheet/font-awesome.min.css">
+
+
+
+
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+<meta name="author" content="Geroge Lin" />
+<meta name="description" content="模板模板，所谓模板，就是可以印制多个一样的东西，以MDI为例，SDI可以类比" />
+<meta name="keywords" content="deep">
+<meta property="og:site_name" content="Geroge Lin's Technical Website"/>
+<meta property="og:title" content="MFC文档视图框架初步"/>
+<meta property="og:description" content="模板模板，所谓模板，就是可以印制多个一样的东西，以MDI为例，SDI可以类比"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://gerogelin.github.io/posts/2013/5月/mfcwen-dang-shi-tu-kuang-jia-chu-bu.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2013-05-02 15:53:00+08:00"/>
+<meta property="article:modified_time" content="2013-05-02 15:53:00+08:00"/>
+<meta property="article:author" content="http://gerogelin.github.io/author/geroge-lin.html">
+<meta property="article:section" content="MFC"/>
+<meta property="article:tag" content="deep"/>
+<meta property="og:image" content="http://gerogelin.github.io/images/avatar.jpg">
+  <title>Geroge Lin's Technical Website &ndash; MFC文档视图框架初步</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://gerogelin.github.io">
+        <img src="http://gerogelin.github.io/images/avatar.jpg" alt="Geroge Lin" title="Geroge Lin">
+      </a>
+      <h1><a href="http://gerogelin.github.io">Geroge Lin</a></h1>
+      <p>I'm Geroge Lin, From China. This is my technical website</p>
+      <nav>
+        <ul class="list">
+        </ul>
+      </nav>
+      <ul class="social">
+        <li><a class="sc-github" href="https://github.com/gerogelin" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-envelope" href="mailto:lyssan10@gmail.com" target="_blank"><i class="fa fa-envelope"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+  <main>
+    <nav>
+      <a href="http://gerogelin.github.io">Home</a>
+      <a href="/categories.html">CATEGORIES</a>
+      <a href="/tags.html">TAGS</a>
+    </nav>
+
+<article>
+  <header>
+    <h1 id="mfcwen-dang-shi-tu-kuang-jia-chu-bu">MFC文档视图框架初步</h1>
+    <p>Posted on 周四 02 五月 2013 in <a href="http://gerogelin.github.io/category/mfc.html">MFC</a></p>
+  </header>
+  <div>
+    <h3>文档模板CDocTemplate 是关键</h3>
+<p><img alt="示意图" src="images/2013/05/mfcview.jpg" /></p>
+<p>上图为Template和Doc，View，Frame 的关系示意图</p>
+<p>模板模板，所谓模板，就是可以印制多个一样的东西，以 <strong>MDI</strong>为例，SDI可以类比</p>
+<p>可以用DocTemplate制作一个ChildFrame即子窗口</p>
+<p>其中主要用到<code>CreateNewFrame()</code>这个函数</p>
+<p>当然一个app可以拥有多个模板，来印制不同的窗口，就像VC6.0的代码编辑窗口和资源设计窗口一样</p>
+<p>代码编辑窗口可以进行文本编辑</p>
+<p>而资源设计窗口可以显示图像，进行缩放等的拉动</p>
+<h3>Doc</h3>
+<p>文档类用来管理数据，打开，存储，关闭，处理，一个文档类可以用多个视图表示</p>
+<p>打一个不恰当的比方，一张图像可以用画图打开，也可以用Ps打开</p>
+<p>所谓文档（以面向对象的观点理解）就是不一样的文件，处理不同文件，当然要用不同的类</p>
+<p>处理文字和处理视频的方法肯定不同啊</p>
+<h3>View</h3>
+<p>视图类主要是管理 <strong>数据如何显示</strong>，让数据以什么样的形式显示在窗口上，所以一个视图只能显示一个文档</p>
+<p>你可以以“可视”的方法显示一张图像，你也可以以ASCII码的形式显示一张图像（如果你愿意）</p>
+<h3>Frame</h3>
+<p>框架类主要负责View外围的创建，比如菜单，状态栏，标题栏，工具栏等</p>
+<p>和View最主要的区别是不和Doc的打交道，只负责如何让用户更好使用，而且可以理解为主要是GUI的设计</p>
+<p>比如你用画图和Ps打开同一张图片，画图的就没有图层的概念，而Ps则在主Frame上有图层的东西</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="http://gerogelin.github.io/tag/deep.html">deep</a>
+    </p>
+  </div>
+</article>
+
+    <footer>
+        <p>&copy; Geroge </p>
+<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p>    </footer>
+  </main>
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "name": "MFC文档视图框架初步",
+  "headline": "MFC文档视图框架初步",
+  "datePublished": "2013-05-02 15:53:00+08:00",
+  "dateModified": "2013-05-02 15:53:00+08:00",
+  "author": {
+    "@type": "Person",
+    "name": "Geroge Lin",
+    "url": "http://gerogelin.github.io/author/geroge-lin.html"
+  },
+  "image": "http://gerogelin.github.io/images/avatar.jpg",
+  "url": "http://gerogelin.github.io/posts/2013/5月/mfcwen-dang-shi-tu-kuang-jia-chu-bu.html",
+  "description": "模板模板，所谓模板，就是可以印制多个一样的东西，以MDI为例，SDI可以类比"
+}
+</script></body>
+</html>

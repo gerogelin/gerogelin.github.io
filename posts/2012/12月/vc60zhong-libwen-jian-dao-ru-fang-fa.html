@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="chs">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="http://gerogelin.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="http://gerogelin.github.io/theme/stylesheet/pygments.min.css">
+  <link rel="stylesheet" type="text/css" href="http://gerogelin.github.io/theme/stylesheet/font-awesome.min.css">
+
+
+
+
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+<meta name="author" content="Geroge Lin" />
+<meta name="description" content="vc6.0 中使用lib文件 使用库的方法如下：1. 包含库的头文件在应用程序工程中使用#include "file path"file path可以为绝对路径，也可以为相对于工程所在目录的相对路径" />
+<meta name="keywords" content="tips">
+<meta property="og:site_name" content="Geroge Lin's Technical Website"/>
+<meta property="og:title" content="VC6.0中lib文件导入方法"/>
+<meta property="og:description" content="vc6.0 中使用lib文件 使用库的方法如下：1. 包含库的头文件在应用程序工程中使用#include "file path"file path可以为绝对路径，也可以为相对于工程所在目录的相对路径"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://gerogelin.github.io/posts/2012/12月/vc60zhong-libwen-jian-dao-ru-fang-fa.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2012-12-27 22:37:00+08:00"/>
+<meta property="article:modified_time" content="2012-12-27 22:37:00+08:00"/>
+<meta property="article:author" content="http://gerogelin.github.io/author/geroge-lin.html">
+<meta property="article:section" content="C++"/>
+<meta property="article:tag" content="tips"/>
+<meta property="og:image" content="http://gerogelin.github.io/images/avatar.jpg">
+  <title>Geroge Lin's Technical Website &ndash; VC6.0中lib文件导入方法</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://gerogelin.github.io">
+        <img src="http://gerogelin.github.io/images/avatar.jpg" alt="Geroge Lin" title="Geroge Lin">
+      </a>
+      <h1><a href="http://gerogelin.github.io">Geroge Lin</a></h1>
+      <p>I'm Geroge Lin, From China. This is my technical website</p>
+      <nav>
+        <ul class="list">
+        </ul>
+      </nav>
+      <ul class="social">
+        <li><a class="sc-github" href="https://github.com/gerogelin" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-envelope" href="mailto:lyssan10@gmail.com" target="_blank"><i class="fa fa-envelope"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+  <main>
+    <nav>
+      <a href="http://gerogelin.github.io">Home</a>
+      <a href="/categories.html">CATEGORIES</a>
+      <a href="/tags.html">TAGS</a>
+    </nav>
+
+<article>
+  <header>
+    <h1 id="vc60zhong-libwen-jian-dao-ru-fang-fa">VC6.0中lib文件导入方法</h1>
+    <p>Posted on 周四 27 十二月 2012 in <a href="http://gerogelin.github.io/category/c.html">C++</a></p>
+  </header>
+  <div>
+    <hr />
+<p>vc6.0 中使用lib文件 使用库的方法如下：</p>
+<hr />
+<p>包含库的头文件</p>
+<p>在应用程序工程中使用</p>
+<p><code>#include "file path"</code></p>
+<p>file path可以为绝对路径，也可以为相对于工程所在目录的相对路径</p>
+<p>如果头文件比较多，可以在<code>project&gt;settings&gt;c/c++&gt;preprocessor</code>的<code>Additional include directories</code>中填入你的头文件所在目录</p>
+<hr />
+<p>导入lib库。导入的方法很多
+   * 直接用project&gt;add to project&gt;files的方式将.lib加入工程</p>
+<ul>
+<li>
+<p>使用#pragma指令，如<code>#pragma comment(lib, "your lib path and name")</code></p>
+<p>与前面头文件一样，也可以不在这里指定路径，而是在project&gt;settings&gt;link&gt;input的Additional library path中输入.lib文件所在路径</p>
+</li>
+<li>
+<p>还可以在project&gt;settings&gt;link&gt;general的ojbect/library modules中输入.lib的名字</p>
+</li>
+</ul>
+<hr />
+<p>编译执行程序，如果是静态库，编译后就可直接执行如果是动态库，需要将dll放到可执行文件所在目录下，或者系统目录下，如system32或者windows目录，或者其它任何一个位于环境变量PATH中的目录</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="http://gerogelin.github.io/tag/tips.html">tips</a>
+    </p>
+  </div>
+</article>
+
+    <footer>
+        <p>&copy; Geroge </p>
+<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p>    </footer>
+  </main>
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "name": "VC6.0中lib文件导入方法",
+  "headline": "VC6.0中lib文件导入方法",
+  "datePublished": "2012-12-27 22:37:00+08:00",
+  "dateModified": "2012-12-27 22:37:00+08:00",
+  "author": {
+    "@type": "Person",
+    "name": "Geroge Lin",
+    "url": "http://gerogelin.github.io/author/geroge-lin.html"
+  },
+  "image": "http://gerogelin.github.io/images/avatar.jpg",
+  "url": "http://gerogelin.github.io/posts/2012/12月/vc60zhong-libwen-jian-dao-ru-fang-fa.html",
+  "description": "vc6.0 中使用lib文件 使用库的方法如下：1. 包含库的头文件在应用程序工程中使用#include "file path"file path可以为绝对路径，也可以为相对于工程所在目录的相对路径"
+}
+</script></body>
+</html>
