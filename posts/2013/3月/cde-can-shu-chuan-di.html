@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="chs">
+<html lang="en">
 <head>
   <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
 
@@ -61,7 +61,7 @@
 <article>
   <header>
     <h1 id="cde-can-shu-chuan-di">C++的参数传递</h1>
-    <p>Posted on 周一 11 三月 2013 in <a href="http://gerogelin.github.io/category/experience.html">experience</a></p>
+    <p>Posted on 2013-03-11(周一) in <a href="http://gerogelin.github.io/category/experience.html">experience</a></p>
   </header>
   <div>
     <p>对于对象的参数传递一定要用引用的方式进行传递，特别是在这个类已经写过拷贝构造函数的情况下，如果拷贝构造函数下面也只是写了浅拷贝，那么在对象作为参数传值，在函数中被调用，当从函数出去时，这个对象会被销毁， <strong>如果此时类中有指针变量，那么这个变量也会被销毁</strong>，关键是拷贝构造函数要写好，写成深拷贝的形式，造成的结果是函数外的那个变量的指针指向一个不知道什么地方的地方。</p>
